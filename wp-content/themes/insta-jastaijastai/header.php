@@ -63,3 +63,5 @@
 			?>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
+	<!-- Alert -->
+    <div id="msg"></div>
