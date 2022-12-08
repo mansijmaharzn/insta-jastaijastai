@@ -10,7 +10,8 @@ require "config.php";
 
     // redirecting to index if logged in
     if (isset($_SESSION['username'])) {
-        header("location: wp-content/themes/insta-jastaijastai/");
+        // header("location: wp-content/themes/insta-jastaijastai/");
+        echo "<script>window.location.href='../../';</script>";
     }
 
     if (isset($_POST['submit'])) {
