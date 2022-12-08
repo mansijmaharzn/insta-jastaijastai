@@ -8,7 +8,7 @@
  *
  * @package insta-jastaijastai
  */
-
+	session_start();
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -23,28 +23,25 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 		<nav class="navbar navbar-expand-lg bg-light">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="#">Navbar</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
-					<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="#">Home</a>
-					</li>
-					<li class="nav-item">
-					<a class="nav-link" href="#">Features</a>
-					</li>
-					<li class="nav-item">
-					<a class="nav-link" href="#">Pricing</a>
-					</li>
-					<li class="nav-item">
-					<a class="nav-link disabled">Disabled</a>
-					</li>
-				</ul>
-				</div>
+		<div class="container-fluid">
+			<a class="navbar-brand text-black" href="/insta-jastaijastai">Blogasm</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<a class="nav-link" aria-current="page" href="/insta-jastaijastai">Home</a>
+				<?php if(isset($_SESSION['username'])) : ?>
+				<a class="nav-link" href="#">Create Post</a>
+				<a class="nav-link" href="#"><?php echo $_SESSION['username']; ?></a>
+				<a class="nav-link" href="/insta-jastaijastai/index.php/logout">Logout</a>
+				<?php else : ?>
+				<a class="nav-link" href="/insta-jastaijastai/index.php/login">Login</a>
+				<a class="nav-link" href="/insta-jastaijastai/index.php/signup">Sign Up</a>
+				<?php endif; ?>
 			</div>
+			</div>
+		</div>
 		</nav>
 
 		<nav id="site-navigation" class="main-navigation">

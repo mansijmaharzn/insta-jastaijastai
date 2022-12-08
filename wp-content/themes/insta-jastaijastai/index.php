@@ -16,7 +16,7 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
-
+    <h1>hi this is index</h1>
 </main><!-- #main -->
 
 <?php
