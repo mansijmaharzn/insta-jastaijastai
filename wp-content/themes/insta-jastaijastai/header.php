@@ -18,13 +18,6 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
-	
-	<link rel="stylesheet" href="wp-content/themes/insta-jastaijastai/assets/css/header.css">
-	<!-- <style>
-		body {
-    		background-color: #DCF8FD;
-		}
-	</style> -->
 </head>
 
 <body <?php body_class(); ?>>

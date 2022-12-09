@@ -44,6 +44,7 @@ require "config.php";
 
 <!-- Comments -->
 <!-- commentForm -->
+<?php if (isset($_SESSION['username'])) : ?>
 <form method="POST" id="comment_data">
     <!-- for hiddens -->
     <input name="username" type="hidden" id="username" value=<?php echo $thepost->username; ?>>
@@ -55,6 +56,9 @@ require "config.php";
     </div>
     <button name="submit" id="submit" type="submit">Comment</button>
 </form>
+<?php else : ?>
+<h3>Login to Comment</h3>
+<?php endif; ?>
 
 <!-- showComments -->
 <?php foreach($comment as $singleComment) : ?>
