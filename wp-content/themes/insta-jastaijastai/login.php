@@ -36,20 +36,22 @@ require "config.php";
     }
 ?>
 
-<div class="container m-5 p-5 pt-2">
+<div class="container p-5 px-6">
 <h1 align="center">Login</h1>
 <form action="<?php echo  get_permalink($page_id); ?>" method="POST">
 <div class="form-floating mb-3 mt-4">
-  <input type="email" name="email" class="form-control" id="floatingInput" placeholder="messi@ankara.com">
+  <input type="email" name="email" class="form-control rounded-4" id="floatingInput" placeholder="messi@ankara.com">
   <label for="floatingInput">Email address</label>
 </div>
 <div class="form-floating mb-4">
-  <input type="password" name="userpassword" class="form-control" id="floatingPassword" placeholder="Password">
+  <input type="password" name="userpassword" class="form-control rounded-4" id="floatingPassword" placeholder="Password">
   <label for="floatingPassword">Password</label>
 </div>
 
-<button class="btn btn-outline-info me-2 text-black" type="submit" name="submit">Sign Up</button>
+<button class="btn me-2 text-black rounded-pill" type="submit" name="submit"
+    style="background-color: #FFCDC4">Sign In</button>
 </form>
+<h6 class="pt-4">Don't have an account? <a href="/insta-jastaijastai/index.php/signup">Sign Up</a></h6>
 </div>
 
 
