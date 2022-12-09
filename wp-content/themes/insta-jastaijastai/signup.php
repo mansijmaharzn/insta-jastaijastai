@@ -59,7 +59,7 @@ require "config.php";
 <button class="btn me-2 text-black rounded-pill" type="submit" name="submit"
   style="background-color: #FFCDC4">Sign Up</button>
 </form>
-<h6 class="pt-4">ALready have an account? <a href="/insta-jastaijastai/index.php/login">Login</a></h6>
+<h6 class="pt-4">Already have an account? <a href="/insta-jastaijastai/index.php/login">Login</a></h6>
 </div>
 
 <?php
