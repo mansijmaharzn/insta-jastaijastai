@@ -186,3 +186,9 @@ function register_navwalker(){
 	require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 }
 add_action( 'after_setup_theme', 'register_navwalker' );
+
+// linking css
+function my_scripts() {
+  wp_enqueue_style( 'my_style', get_stylesheet_directory_uri() . '/assets/css/header.css' );
+}
+add_action( 'wp_enqueue_scripts', 'my_scripts' );
