@@ -21,23 +21,27 @@ require "config.php";
     $comment = $comments->fetchAll(PDO::FETCH_OBJ);
 
     if (isset($_POST['submit'])) {
-        $username = $_POST['username'];
-        $post_id = $_POST['post_id'];
-        $comment = $_POST['comment'];
+        if ($_POST['comment'] == '') {
+            echo "Can't comment nothing!";
+        } else {
+            $username = $_POST['username'];
+            $post_id = $_POST['post_id'];
+            $comment = $_POST['comment'];
 
-        $insert = $conn->prepare("INSERT INTO comments (username, post_id, comment) VALUES (:username, :post_id, :comment)");
-        $insert->execute([
-            ':username' => $username,
-            ':post_id' => $post_id,
-            ':comment' => $comment,
-        ]);
+            $insert = $conn->prepare("INSERT INTO comments (username, post_id, comment) VALUES (:username, :post_id, :comment)");
+            $insert->execute([
+                ':username' => $username,
+                ':post_id' => $post_id,
+                ':comment' => $comment,
+            ]);
 
-        echo "<script>window.location.href='?id=$id';</script>";
+            echo "<script>window.location.href='?id=$id';</script>";
+        }
     }
 ?>
 
 <!-- contents -->
-<div>
+<div class="rounded-5 my-4 p-5" style="background-color: #FFCDC4">
     <h1><?php echo $thepost->title; ?></h1>
     <p><?php echo $thepost->body; ?></p>
 </div>
@@ -50,23 +54,27 @@ require "config.php";
     <input name="username" type="hidden" id="username" value=<?php echo $thepost->username; ?>>
     <input name="post_id" type="hidden" id="post_id" value=<?php echo $thepost->id; ?>>
 
-    <div class="form-floating mb-4">
-        <textarea name="comment" class="form-control" placeholder="Enter Comment" id="comment" style="height: 100px"></textarea>
+    <div class="form-floating mb-4 mx-2">
+        <textarea name="comment" class="form-control rounded-4" placeholder="Enter Comment" id="comment" style="height: 100px"></textarea>
         <label for="floatingTextarea2">Comment</label>
     </div>
-    <button name="submit" id="submit" type="submit">Comment</button>
+
+    <button class="btn mx-2 mb-3 text-black rounded-pill" style="background-color: #FE72BD" name="submit" id="submit" type="submit">Comment</button>
 </form>
 <?php else : ?>
-<h3>Login to Comment</h3>
+<h3 align="center" class="m-2 p-2" style="color: red;"><a href="/insta-jastaijastai/index.php/login">Login</a> to Comment :)</h3>
 <?php endif; ?>
 
 <!-- showComments -->
+<div class="rounded-5 p-4 mt-3" style="background-color: #FFCDC4">
+<h3>Comments</h3>
 <?php foreach($comment as $singleComment) : ?>
-<div class="listComment">
+<div class="listComment my-3 px-4 pt-1 rounded-pill" style="background-color: #F9D1D4">
     <h6><?php echo $singleComment->username; ?></h6>
     <p><?php echo $singleComment->comment; ?></p>
 </div>
 <?php endforeach; ?>
+</div>
 
 <!-- Footer -->
 <?php
