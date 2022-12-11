@@ -19,6 +19,7 @@ require "config.php";
     $comments->execute();
 
     $comment = $comments->fetchAll(PDO::FETCH_OBJ);
+    $comment = array_reverse($comment);
 
     if (isset($_POST['submit'])) {
         if ($_POST['comment'] == '') {
@@ -51,7 +52,7 @@ require "config.php";
 <?php if (isset($_SESSION['username'])) : ?>
 <form method="POST" id="comment_data">
     <!-- for hiddens -->
-    <input name="username" type="hidden" id="username" value=<?php echo $thepost->username; ?>>
+    <input name="username" type="hidden" id="username" value=<?php echo $_SESSION['username']; ?>>
     <input name="post_id" type="hidden" id="post_id" value=<?php echo $thepost->id; ?>>
 
     <div class="form-floating mb-4 mx-2">

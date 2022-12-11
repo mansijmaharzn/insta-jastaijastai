@@ -20,6 +20,7 @@ require "config.php";
     $select = $conn->query("SELECT * FROM posts");
     $select->execute();
     $rows = $select->fetchAll(PDO::FETCH_OBJ);
+    $rows = array_reverse($rows);
 ?>
 
 <?php foreach($rows as $row) : ?>
