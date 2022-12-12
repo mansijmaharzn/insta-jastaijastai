@@ -67,10 +67,10 @@ require "config.php";
 <?php endif; ?>
 
 <!-- showComments -->
-<div class="rounded-5 p-4 mt-3" style="background-color: #FFCDC4">
+<div class="rounded-5 p-4 mt-3" style="background-color: #FFCDC4; margin: 0% 20%">
 <h3>Comments</h3>
 <?php foreach($comment as $singleComment) : ?>
-<div class="listComment my-3 px-4 pt-1 rounded-pill" style="background-color: #F9D1D4">
+<div class="listComment my-3 pt-1 rounded-pill">
     <h6><?php echo $singleComment->username; ?></h6>
     <p><?php echo $singleComment->comment; ?></p>
 </div>
