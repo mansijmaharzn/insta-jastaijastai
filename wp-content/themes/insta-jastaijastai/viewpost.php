@@ -48,6 +48,7 @@ require "config.php";
 
     $like = $likes->fetchAll(PDO::FETCH_OBJ);
 
+    // liking
     if (isset($_POST['like'])) {
         $post_id = $_POST['post_id'];
         $username = $_POST['username'];
@@ -59,6 +60,18 @@ require "config.php";
             ':username' => $username,
             ':post_id' => $post_id,
         ]);
+
+        echo "<script>window.location.href='?id=$id';</script>";
+    }
+
+    // diliking
+    if (isset($_POST['dislike'])) {
+        $post_id = $_POST['post_id'];
+        $username = $_POST['username'];
+
+        $conn->query("UPDATE posts SET `likes` = `likes` - 1 WHERE id='$id'");
+
+        $conn->query("DELETE FROM likes WHERE post_id='$post_id' AND username='$username'");
 
         echo "<script>window.location.href='?id=$id';</script>";
     }
@@ -77,7 +90,11 @@ require "config.php";
     <button class="btn mb-3 text-black rounded-pill" style="background-color: #FE72BD" name="like" id="like" type="submit">Like</button>
 </form>
 <?php else : ?>
-<p>Like hanisakis bhai</p>
+<form method="POST">
+    <input name="username" type="hidden" id="username" value=<?php echo $_SESSION['username']; ?>>
+    <input name="post_id" type="hidden" id="post_id" value=<?php echo $thepost->id; ?>>
+    <button class="btn mb-3 text-black rounded-pill" style="background-color: #FE72BD" name="dislike" id="dislike" type="submit">Dislike</button>
+</form>
 <?php endif; ?>
 </div>
 
