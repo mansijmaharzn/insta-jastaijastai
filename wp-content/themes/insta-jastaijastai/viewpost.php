@@ -21,6 +21,7 @@ require "config.php";
     $comment = $comments->fetchAll(PDO::FETCH_OBJ);
     $comment = array_reverse($comment);
 
+    // comment
     if (isset($_POST['submit'])) {
         if ($_POST['comment'] == '') {
             echo "Can't comment nothing!";
@@ -39,12 +40,35 @@ require "config.php";
             echo "<script>window.location.href='?id=$id';</script>";
         }
     }
+
+    // like
+    if (isset($_POST['like'])) {
+        $post_id = $_POST['post_id'];
+        $username = $_POST['username'];
+
+        $conn->query("UPDATE posts SET `likes` = `likes` + 1 WHERE id='$id'");
+
+        $insert = $conn->prepare("INSERT INTO likes (username, post_id) VALUES (:username, :post_id)");
+        $insert->execute([
+            ':username' => $username,
+            ':post_id' => $post_id,
+        ]);
+
+        echo "<script>window.location.href='?id=$id';</script>";
+    }
 ?>
 
 <!-- contents -->
 <div class="rounded-5 my-4 p-5" style="background-color: #FFCDC4">
     <h1><?php echo $thepost->title; ?></h1>
     <p><?php echo $thepost->body; ?></p>
+    <p>Likes: <?php echo $thepost->likes; ?></p>
+
+<form method="POST">
+    <input name="username" type="hidden" id="username" value=<?php echo $_SESSION['username']; ?>>
+    <input name="post_id" type="hidden" id="post_id" value=<?php echo $thepost->id; ?>>
+    <button class="btn mb-3 text-black rounded-pill" style="background-color: #FE72BD" name="like" id="like" type="submit">Like</button>
+</form>
 </div>
 
 <!-- Comments -->
