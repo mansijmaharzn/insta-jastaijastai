@@ -43,7 +43,7 @@ require "config.php";
         <label for="floatingTextarea2">Body</label>
     </div>
 
-    <button class="btn btn-outline-info me-2 text-black" type="submit" name="submit">Publish</button>
+    <button class="btn mx-2 mb-3 text-black rounded-pill" style="background-color: #FE72BD" type="submit" name="submit">Publish</button>
 </form>
 </div>
 
