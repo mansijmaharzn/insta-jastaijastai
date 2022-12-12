@@ -14,6 +14,7 @@ require "config.php";
         $thepost = $post->fetch(PDO::FETCH_OBJ);
     }
 
+    // comment
     $id = $_GET['id'];
     $comments = $conn->query("SELECT * FROM comments WHERE post_id='$id'");
     $comments->execute();
@@ -21,7 +22,6 @@ require "config.php";
     $comment = $comments->fetchAll(PDO::FETCH_OBJ);
     $comment = array_reverse($comment);
 
-    // comment
     if (isset($_POST['submit'])) {
         if ($_POST['comment'] == '') {
             echo "Can't comment nothing!";
@@ -42,6 +42,13 @@ require "config.php";
     }
 
     // like
+    $likes = $conn->query("SELECT * FROM likes WHERE username='$_SESSION['username']' AND post_id='$id'");
+    $likes->execute();
+
+    $like = $likes->fetchAll(PDO::FETCH_OBJ);
+
+    echo mysql_num_rows($like);
+
     if (isset($_POST['like'])) {
         $post_id = $_POST['post_id'];
         $username = $_POST['username'];
