@@ -42,12 +42,11 @@ require "config.php";
     }
 
     // like
-    $likes = $conn->query("SELECT * FROM likes WHERE username='$_SESSION['username']' AND post_id='$id'");
+    $username = $_SESSION['username'];
+    $likes = $conn->query("SELECT * FROM likes WHERE post_id='$id' AND username='$username'");
     $likes->execute();
 
     $like = $likes->fetchAll(PDO::FETCH_OBJ);
-
-    echo mysql_num_rows($like);
 
     if (isset($_POST['like'])) {
         $post_id = $_POST['post_id'];
@@ -71,11 +70,15 @@ require "config.php";
     <p><?php echo $thepost->body; ?></p>
     <p>Likes: <?php echo $thepost->likes; ?></p>
 
+<?php if (count($like) == 0) : ?>
 <form method="POST">
     <input name="username" type="hidden" id="username" value=<?php echo $_SESSION['username']; ?>>
     <input name="post_id" type="hidden" id="post_id" value=<?php echo $thepost->id; ?>>
     <button class="btn mb-3 text-black rounded-pill" style="background-color: #FE72BD" name="like" id="like" type="submit">Like</button>
 </form>
+<?php else : ?>
+<p>Like hanisakis bhai</p>
+<?php endif; ?>
 </div>
 
 <!-- Comments -->
