@@ -81,45 +81,48 @@ require "config.php";
 <div class="rounded-5 my-4 p-5" style="background-color: #FFCDC4">
     <h1><?php echo $thepost->title; ?></h1>
     <p><?php echo $thepost->body; ?></p>
+    <p>Post by: <?php echo $thepost->username; ?></p>
     <p>Likes: <?php echo $thepost->likes; ?></p>
+</div>
 
+<!-- Comments -->
+<?php if (isset($_SESSION['username'])) : ?>
+<!-- like-btn -->
 <?php if (count($like) == 0) : ?>
 <form method="POST">
     <input name="username" type="hidden" id="username" value=<?php echo $_SESSION['username']; ?>>
     <input name="post_id" type="hidden" id="post_id" value=<?php echo $thepost->id; ?>>
-    <button class="btn mb-3 text-black rounded-pill" style="background-color: #FE72BD" name="like" id="like" type="submit">Like</button>
+    <button class="btn mb-3 text-black rounded-pill" style="background-color: #FE72BD" name="like" id="like" type="submit">Like Post</button>
 </form>
 <?php else : ?>
 <form method="POST">
     <input name="username" type="hidden" id="username" value=<?php echo $_SESSION['username']; ?>>
     <input name="post_id" type="hidden" id="post_id" value=<?php echo $thepost->id; ?>>
-    <button class="btn mb-3 text-black rounded-pill" style="background-color: #FE72BD" name="dislike" id="dislike" type="submit">Dislike</button>
+    <button class="btn mb-3 text-black rounded-pill" style="background-color: #FE72BD" name="dislike" id="dislike" type="submit">Dislike Post</button>
 </form>
 <?php endif; ?>
-</div>
 
-<!-- Comments -->
 <!-- commentForm -->
-<?php if (isset($_SESSION['username'])) : ?>
 <form method="POST" id="comment_data">
     <!-- for hiddens -->
     <input name="username" type="hidden" id="username" value=<?php echo $_SESSION['username']; ?>>
     <input name="post_id" type="hidden" id="post_id" value=<?php echo $thepost->id; ?>>
 
     <div class="form-floating mb-4 mx-2">
-        <textarea name="comment" class="form-control rounded-4" placeholder="Enter Comment" id="comment" style="height: 100px"></textarea>
+        <textarea name="comment" class="form-control rounded-4 mt-4" placeholder="Enter Comment" id="comment" style="height: 100px"></textarea>
         <label for="floatingTextarea2">Comment</label>
     </div>
 
     <button class="btn mx-2 mb-3 text-black rounded-pill" style="background-color: #FE72BD" name="submit" id="submit" type="submit">Comment</button>
 </form>
+
 <?php else : ?>
-<h3 align="center" class="m-2 p-2" style="color: red;"><a href="/insta-jastaijastai/index.php/login">Login</a> to Comment :)</h3>
+<h3 align="center" class="m-2 p-2" style="color: red;"><a href="/insta-jastaijastai/index.php/login">Login</a> to Comment and Like ;)</h3>
 <?php endif; ?>
 
 <!-- showComments -->
 <div class="rounded-5 p-4 mt-3" style="background-color: #FFCDC4; margin: 0% 20%">
-<h3>Comments</h3>
+<h3><?php echo count($comment); ?> Comments</h3>
 <?php foreach($comment as $singleComment) : ?>
 <div class="listComment my-3 pt-1 rounded-pill">
     <h6><?php echo $singleComment->username; ?></h6>
