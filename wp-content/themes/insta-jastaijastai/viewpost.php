@@ -117,7 +117,7 @@ require "config.php";
 </form>
 
 <?php else : ?>
-<h3 align="center" class="m-2 p-2" style="color: red;"><a href="/insta-jastaijastai/index.php/login">Login</a> to Comment and Like ;)</h3>
+<h3 align="center" class="m-2 p-2" style="color: red;"><a href="/insta-jastaijastai/index.php/login">Login</a> to Like and Comment pretty stranger ;)</h3>
 <?php endif; ?>
 
 <!-- showComments -->
