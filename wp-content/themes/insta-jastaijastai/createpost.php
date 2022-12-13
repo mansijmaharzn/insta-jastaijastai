@@ -33,12 +33,12 @@ require "config.php";
 <h1 align="center" class="mt-4">Create Post</h1>
 
 <form method="POST" action="<?php echo  get_permalink($page_id); ?>">
-    <div class="form-floating mb-3 mt-4">
-        <input type="text" name="title" class="form-control" id="floatingInput" placeholder="Enter Title">
+    <div class="form-floating mb-3 mt-4" style="margin: 0% 15%">
+        <input type="text" name="title" class="form-control rounded-4" id="floatingInput" placeholder="Enter Title">
         <label for="floatingInput">Title</label>
     </div>
     <div class="form-floating mb-4">
-        <textarea name="body" class="form-control" placeholder="Enter Body" id="floatingTextarea2" style="height: 200px"></textarea>
+        <textarea name="body" class="form-control rounded-4" placeholder="Enter Body" id="floatingTextarea2" style="height: 200px"></textarea>
         <label for="floatingTextarea2">Body</label>
     </div>
 
@@ -46,4 +46,8 @@ require "config.php";
 </form>
 </div>
 
-<?php require "includes/footer.php"; ?>
+<!-- Footer -->
+<?php
+// get_sidebar(); // search haru xa yesma
+get_footer();
+?>
