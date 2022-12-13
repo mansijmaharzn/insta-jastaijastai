@@ -31,6 +31,7 @@ require "config.php";
     <div class="card-body">
         <h5 class="card-title"><?php echo $row->title; ?></h5>
         <p class="card-text"><?php echo substr($row->body, 0, 90) . '...'; ?></p>
+        <p><p>Likes: <?php echo $row->likes; ?></p></p>
         <a href="/insta-jastaijastai/index.php/view-post?id=<?php echo $row->id; ?>" class="btn btn-primary">View Post</a>
     </div>
 </div>
