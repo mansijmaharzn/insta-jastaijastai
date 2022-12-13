@@ -81,7 +81,7 @@ require "config.php";
 <div class="rounded-5 my-4 p-5" style="background-color: #FFCDC4">
     <h1><?php echo $thepost->title; ?></h1>
     <p><?php echo $thepost->body; ?></p>
-    <p>Post by: <?php echo $thepost->username; ?></p>
+    <p>Post By: <a href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $thepost->username; ?>"><?php echo $thepost->username; ?></a></p>
     <p>Likes: <?php echo $thepost->likes; ?></p>
 </div>
 
@@ -125,7 +125,7 @@ require "config.php";
 <h3><?php echo count($comment); ?> Comments</h3>
 <?php foreach($comment as $singleComment) : ?>
 <div class="listComment my-3 pt-1 rounded-pill">
-    <h6><a href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $singleComment->username; ?>" class="nav-link"><?php echo $singleComment->username; ?></a></h6>
+    <h6><a href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $singleComment->username; ?>"><?php echo $singleComment->username; ?></a></h6>
     <p><?php echo $singleComment->comment; ?></p>
 </div>
 <?php endforeach; ?>

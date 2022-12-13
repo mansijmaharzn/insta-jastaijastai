@@ -30,12 +30,12 @@ require "config.php";
     }
 ?>
 
-<h1>Owa Owa <?php echo $theuser->username; ?>!</h1>
+<h1>Owa Owa <?php echo $theuser->username; ?>! 👋</h1>
 <h2>Email: <?php echo $theuser->email; ?></h2>
-<h2>Since: <?php echo $theuser->created_at; ?></h2>
+<h2>With us Since: <?php echo $theuser->created_at; ?></h2>
 <h3>Posts: <?php echo count($thepost); ?></h3>
-<h3>Contributed <?php echo count($thelike); ?> likes</h3>
-<h3>Contributed <?php echo count($thecomment); ?> comments</h3>
+<h3>Contributed <?php echo count($thelike); ?> likes!</h3>
+<h3>Contributed <?php echo count($thecomment); ?> comments!</h3>
 
 
 <!-- Footer -->
