@@ -32,8 +32,8 @@
 			<div class="navbar-nav">
 				<a class="nav-link" aria-current="page" href="/insta-jastaijastai">Home</a>
 				<?php if(isset($_SESSION['username'])) : ?>
-				<a class="nav-link" href="/insta-jastaijastai/index.php/create-post">Create Post</a>
-				<a class="nav-link" href="#"><?php echo $_SESSION['username']; ?></a>
+					<a class="nav-link" href="/insta-jastaijastai/index.php/create-post">Create Post</a>
+					<a href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $_SESSION['username']; ?>" class="nav-link"><?php echo $_SESSION['username']; ?></a>
 				<a class="nav-link" href="/insta-jastaijastai/index.php/logout">Logout</a>
 				<?php else : ?>
 				<a class="nav-link" href="/insta-jastaijastai/index.php/login">Login</a>
