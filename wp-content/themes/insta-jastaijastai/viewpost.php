@@ -92,13 +92,13 @@ require "config.php";
 <form method="POST">
     <input name="username" type="hidden" id="username" value=<?php echo $_SESSION['username']; ?>>
     <input name="post_id" type="hidden" id="post_id" value=<?php echo $thepost->id; ?>>
-    <button class="btn mb-3 text-black rounded-pill" style="background-color: #FE72BD" name="like" id="like" type="submit">Like Post</button>
+    <button class="btn mb-3 text-black rounded-pill" style="background-color: #05e6bc" name="like" id="like" type="submit">Like Post</button>
 </form>
 <?php else : ?>
 <form method="POST">
     <input name="username" type="hidden" id="username" value=<?php echo $_SESSION['username']; ?>>
     <input name="post_id" type="hidden" id="post_id" value=<?php echo $thepost->id; ?>>
-    <button class="btn mb-3 text-black rounded-pill" style="background-color: #FE72BD" name="dislike" id="dislike" type="submit">Dislike Post</button>
+    <button class="btn mb-3 text-black rounded-pill" style="background-color: #ae64c4" name="dislike" id="dislike" type="submit">Dislike Post</button>
 </form>
 <?php endif; ?>
 
