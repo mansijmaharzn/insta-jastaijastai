@@ -29,14 +29,28 @@ require "config.php";
         $thecomment = $comments->fetchAll(PDO::FETCH_OBJ);
     }
 ?>
+<?php if($_SESSION['username']) : ?>
+<!-- if own profile -->
+<?php if($_SESSION['username'] == $theuser->username) : ?>
 <div class="rounded-5 my-4 p-5" style="background-color: #04ccc2">
 <h1 class="float-end">Owa Owa <?php echo $theuser->username; ?>! 👋</h1>
-<h6 class="float-end">With us Since: <?php echo $theuser->created_at; ?></h6>
+<h6 class="float-end">Thanks for being with us since <?php echo $theuser->created_at; ?></h6>
+<h6 class="float-end">Email Address: <?php echo $theuser->email; ?></h6>
+<h3>You published <?php echo count($thepost); ?> posts!</h3>
+<h3>You contributed <?php echo count($thelike); ?> likes and <?php echo count($thecomment); ?> comments!!!</h3>
+<h2>Keep it up 👌</h2>
+</div>
+<?php endif; ?>
+<!-- if other's profile -->
+<?php else : ?>
+<div class="rounded-5 my-4 p-5" style="background-color: #04b5cc">
+<h1 class="float-end">This is <?php echo $theuser->username; ?>! 👋</h1>
+<h6 class="float-end">Joined: <?php echo $theuser->created_at; ?></h6>
 <h6 class="float-end">Email Address: <?php echo $theuser->email; ?></h6>
 <h3>Posts Published: <?php echo count($thepost); ?></h3>
 <h3>Contributed <?php echo count($thelike); ?> likes and <?php echo count($thecomment); ?> comments!!!</h3>
-<h2>Keep it up 👌</h2>
 </div>
+<?php endif; ?>
 
 <!-- Footer -->
 <?php
