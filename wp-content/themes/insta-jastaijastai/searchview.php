@@ -25,7 +25,8 @@ require "config.php";
 
 <h1 align="center" class="m-5">Search Results for: "<?php echo $searchquery; ?>", just for you (❁´◡`❁)</h1>
 <!-- Posts Results -->
-<div class="rounded-5 my-4 p-5" style="background-color: #04ccc2">
+<div class="row">
+<div class="rounded-5 my-3 mx-4 p-5 col" style="background-color: #04ccc2">
 <h2>Found <?php echo count($postresults); ?> results from posts:</h2>
 <?php foreach($postresults as $singlePost) : ?>
 <div>
@@ -34,13 +35,14 @@ require "config.php";
 <?php endforeach; ?>
 </div>
 <!-- Users Results -->
-<div class="rounded-5 my-4 p-5" style="background-color: #04b5cc">
+<div class="rounded-5 my-3 p-5 col" style="background-color: #04b5cc">
 <h2>Found <?php echo count($userresults); ?> results from users:</h2>
 <?php foreach($userresults as $singleUser) : ?>
 <div>
     <h4><a style="text-decoration: none;" href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $singleUser->username; ?>"><?php echo $singleUser->username; ?></a></h4>
 </div>
 <?php endforeach; ?>
+</div>
 </div>
 
 <!-- Footer -->
