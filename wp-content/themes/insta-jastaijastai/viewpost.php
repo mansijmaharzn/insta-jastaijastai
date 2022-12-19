@@ -10,8 +10,11 @@ require "config.php";
 
         $post = $conn->query("SELECT * FROM posts WHERE id='$id'");
         $post->execute();
-
         $thepost = $post->fetch(PDO::FETCH_OBJ);
+
+        $featuredpost = $conn->query("SELECT * FROM posts WHERE title LIKE '%".$thepost->title."%'");
+        $featuredpost->execute();
+        $thefeaturedpost = $featuredpost->fetchAll(PDO::FETCH_OBJ);
     }
 
     // comment
@@ -120,15 +123,29 @@ require "config.php";
 <h3 align="center" class="m-2 p-2" style="color: red;"><a href="/insta-jastaijastai/index.php/login">Login</a> to Like and Comment pretty stranger ;)</h3>
 <?php endif; ?>
 
+<div class="row">
 <!-- showComments -->
-<div class="rounded-5 p-4 mt-3" style="background-color: #FFCDC4; margin: 0% 20%">
+<div class="col rounded-5 my-3 mx-4 p-5" style="background-color: #FFCDC4">
 <h3><?php echo count($comment); ?> Comments</h3>
 <?php foreach($comment as $singleComment) : ?>
-<div class="listComment my-3 pt-1 rounded-pill">
+<div class="listComment my-3 pt-1">
     <h6><a href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $singleComment->username; ?>"><?php echo $singleComment->username; ?></a></h6>
     <p><?php echo $singleComment->comment; ?></p>
 </div>
 <?php endforeach; ?>
+</div>
+
+<!-- featuredPosts -->
+<div class="col rounded-5 my-3 mx-4 p-5" style="background-color: #FFCDC4">
+<h3><?php echo count($thefeaturedpost) - 1; ?> Related Posts</h3>
+<?php foreach($thefeaturedpost as $singleFeaturedPost) : ?>
+<div class="my-3">
+    <?php if ($singleFeaturedPost->title != $thepost->title) : ?>
+    <a href="/insta-jastaijastai/index.php/view-post?id=<?php echo $singleFeaturedPost->id; ?>"><?php echo $singleFeaturedPost->title; ?></a>
+    <?php endif; ?>
+</div>
+<?php endforeach; ?>
+</div>
 </div>
 
 <!-- Footer -->
