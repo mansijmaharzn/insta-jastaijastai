@@ -12,7 +12,7 @@
 ?>
 
 <?php
-	if (isset($_POST['submit'])) {
+	if (isset($_POST['search'])) {
         if ($_POST['searchquery'] == '') {
             echo "Can't search nothing!";
         } else {
@@ -71,7 +71,7 @@
 			</ul>
 			<form class="d-flex" role="search" method="POST">
 				<input name="searchquery" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success" type="submit" name="submit">Search</button>
+				<button class="btn btn-outline-success" type="submit" name="search" id="search">Search</button>
 			</form>
 			</div>
 		</div>
