@@ -73,7 +73,7 @@ require "config.php";
         <input type="text" name="custom_status" class="form-control rounded-4" id="floatingInput" placeholder="Enter Custom Status">
         <label for="floatingInput">Custom Status</label>
     </div>
-    <button class="btn mx-2 mb-3 text-black rounded-pill" style="background-color: #FE72BD" type="submit" name="submit">Update</button>
+    <button class="btn mb-4 text-black rounded-pill" style="background-color: #FE72BD" type="submit" name="submit">Update</button>
 </form>
 </div>
 <?php else : ?>

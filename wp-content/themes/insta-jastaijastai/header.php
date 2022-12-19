@@ -10,6 +10,19 @@
  */
 	session_start();
 ?>
+
+<?php
+	if (isset($_POST['submit'])) {
+        if ($_POST['searchquery'] == '') {
+            echo "Can't search nothing!";
+        } else {
+            $searchquery = $_POST['searchquery'];
+
+            echo "<script>window.location.href='index.php/search-view?query=$searchquery';</script>";
+        }
+    }
+?>
+
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -25,21 +38,41 @@
 		<nav class="navbar navbar-expand-lg bg-light">
 		<div class="container-fluid">
 			<a class="navbar-brand text-black" href="/insta-jastaijastai">Blogasm</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-			<div class="navbar-nav">
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
 				<a class="nav-link" aria-current="page" href="/insta-jastaijastai">Home</a>
+				</li>
+
 				<?php if(isset($_SESSION['username'])) : ?>
-					<a class="nav-link" href="/insta-jastaijastai/index.php/create-post">Create Post</a>
-					<a href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $_SESSION['username']; ?>" class="nav-link"><?php echo $_SESSION['username']; ?></a>
-				<a class="nav-link" href="/insta-jastaijastai/index.php/logout">Logout</a>
+				<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $_SESSION['username']; ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				<?php echo $_SESSION['username']; ?>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a class="dropdown-item" href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $_SESSION['username']; ?>">View Profile</a></li>
+					<li><a class="dropdown-item" href="/insta-jastaijastai/index.php/create-post">Create Post</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="/insta-jastaijastai/index.php/logout">Logout</a></li>
+				</ul>
+				</li>
+
 				<?php else : ?>
+				<li>
 				<a class="nav-link" href="/insta-jastaijastai/index.php/login">Login</a>
+				</li>
+				<li>
 				<a class="nav-link" href="/insta-jastaijastai/index.php/signup">Sign Up</a>
+				</li>
 				<?php endif; ?>
-			</div>
+			</ul>
+			<form class="d-flex" role="search" method="POST">
+				<input name="searchquery" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success" type="submit" name="submit">Search</button>
+			</form>
 			</div>
 		</div>
 		</nav>

@@ -145,7 +145,7 @@ function insta_jastaijastai_scripts() {
 
 	// adding bootstrap
 	wp_enqueue_style('bootstrap-style', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css');
-	wp_enqueue_style('bootstrap-js', get_template_directory_uri() . '/bootstrap/js/bootstrap.bundle.min.js', array('jquery'));
+	wp_enqueue_script('bootstrap-js', get_template_directory_uri() . '/bootstrap/js/bootstrap.bundle.min.js', array('jquery'));
 
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
