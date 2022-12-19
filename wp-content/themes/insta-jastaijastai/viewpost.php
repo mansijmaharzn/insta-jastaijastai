@@ -88,9 +88,8 @@ require "config.php";
     <p>Likes: <?php echo $thepost->likes; ?></p>
 </div>
 
-<!-- Comments -->
-<?php if (isset($_SESSION['username'])) : ?>
 <!-- like-btn -->
+<?php if (isset($_SESSION['username'])) : ?>
 <?php if (count($like) == 0) : ?>
 <form method="POST">
     <input name="username" type="hidden" id="username" value=<?php echo $_SESSION['username']; ?>>
@@ -104,29 +103,32 @@ require "config.php";
     <button class="btn mb-3 text-black rounded-pill" style="background-color: #ae64c4" name="dislike" id="dislike" type="submit">Dislike Post</button>
 </form>
 <?php endif; ?>
+<?php endif; ?>
 
+<?php if (!isset($_SESSION['username'])) : ?>
+<h3 align="center" class="m-2 p-2" style="color: red;"><a href="/insta-jastaijastai/index.php/login">Login</a> to Like and Comment pretty stranger ;)</h3>
+<?php endif; ?>
+
+<!-- Comment Section -->
+<div class="row">
+<div class="col rounded-5 my-3 mx-4 p-5" style="background-color: #FFCDC4">
+<h3><?php echo count($comment); ?> Comments</h3>
+<?php if (isset($_SESSION['username'])) : ?>
 <!-- commentForm -->
 <form method="POST" id="comment_data">
     <!-- for hiddens -->
     <input name="username" type="hidden" id="username" value=<?php echo $_SESSION['username']; ?>>
     <input name="post_id" type="hidden" id="post_id" value=<?php echo $thepost->id; ?>>
 
-    <div class="form-floating mb-4 mx-2">
+    <div class="form-floating my-2">
         <textarea name="comment" class="form-control rounded-4 mt-4" placeholder="Enter Comment" id="comment" style="height: 100px"></textarea>
         <label for="floatingTextarea2">Comment</label>
     </div>
 
-    <button class="btn mx-2 mb-3 text-black rounded-pill" style="background-color: #FE72BD" name="submit" id="submit" type="submit">Comment</button>
+    <button class="btn my-2 text-black rounded-pill" style="background-color: #FE72BD" name="submit" id="submit" type="submit">Comment</button>
 </form>
-
-<?php else : ?>
-<h3 align="center" class="m-2 p-2" style="color: red;"><a href="/insta-jastaijastai/index.php/login">Login</a> to Like and Comment pretty stranger ;)</h3>
 <?php endif; ?>
-
-<div class="row">
 <!-- showComments -->
-<div class="col rounded-5 my-3 mx-4 p-5" style="background-color: #FFCDC4">
-<h3><?php echo count($comment); ?> Comments</h3>
 <?php foreach($comment as $singleComment) : ?>
 <div class="listComment my-3 pt-1">
     <h6><a href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $singleComment->username; ?>"><?php echo $singleComment->username; ?></a></h6>
