@@ -23,22 +23,22 @@ require "config.php";
     }
 ?>
 
-<h1 align="center">Search Results for: <?php echo $searchquery; ?></h1>
+<h1 align="center" class="m-5">Search Results for: "<?php echo $searchquery; ?>", just for you (❁´◡`❁)</h1>
 <!-- Posts Results -->
-<div class="m-4">
+<div class="rounded-5 my-4 p-5" style="background-color: #04ccc2">
 <h2>Found <?php echo count($postresults); ?> results from posts:</h2>
 <?php foreach($postresults as $singlePost) : ?>
 <div>
-    <a href="/insta-jastaijastai/index.php/view-post?id=<?php echo $singlePost->id; ?>"><?php echo $singlePost->title; ?></a>
+    <h4><a style="text-decoration: none;" href="/insta-jastaijastai/index.php/view-post?id=<?php echo $singlePost->id; ?>"><?php echo $singlePost->title; ?></a></h4>
 </div>
 <?php endforeach; ?>
 </div>
 <!-- Users Results -->
-<div class="m-4">
+<div class="rounded-5 my-4 p-5" style="background-color: #04b5cc">
 <h2>Found <?php echo count($userresults); ?> results from users:</h2>
 <?php foreach($userresults as $singleUser) : ?>
 <div>
-    <h6><a href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $singleUser->username; ?>"><?php echo $singleUser->username; ?></a></h6>
+    <h4><a style="text-decoration: none;" href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $singleUser->username; ?>"><?php echo $singleUser->username; ?></a></h4>
 </div>
 <?php endforeach; ?>
 </div>
