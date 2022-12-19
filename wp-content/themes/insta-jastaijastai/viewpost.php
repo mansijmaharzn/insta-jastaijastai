@@ -121,7 +121,7 @@ require "config.php";
     <input name="post_id" type="hidden" id="post_id" value=<?php echo $thepost->id; ?>>
 
     <div class="form-floating my-2">
-        <textarea name="comment" class="form-control rounded-4 mt-4" placeholder="Enter Comment" id="comment" style="height: 100px"></textarea>
+        <textarea name="comment" class="form-control rounded-4 mt-4" placeholder="Enter Comment" id="comment" style="height: 80px"></textarea>
         <label for="floatingTextarea2">Comment</label>
     </div>
 
