@@ -45,6 +45,7 @@ require "config.php";
     }
 
     // like
+    // undefined username problem here! and custom status error
     $username = $_SESSION['username'];
     $likes = $conn->query("SELECT * FROM likes WHERE post_id='$id' AND username='$username'");
     $likes->execute();
