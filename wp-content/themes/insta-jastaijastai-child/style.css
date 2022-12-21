@@ -1,0 +1,19 @@
+/* 
+Theme Name:		 insta-jastaijastai-child
+Theme URI:		 http://childtheme-generator.com/
+Description:	 insta-jastaijastai-child is a child theme of insta-jastaijastai, created by ChildTheme-Generator.com
+Author:			 team-maharjan
+Author URI:		 http://childtheme-generator.com/
+Template:		 insta-jastaijastai
+Version:		 1.0.0
+Text Domain:	 insta-jastaijastai-child
+*/
+
+
+/*
+    Add your custom styles here
+*/
+
+body {
+    background-color: #DCF8FD;
+}
