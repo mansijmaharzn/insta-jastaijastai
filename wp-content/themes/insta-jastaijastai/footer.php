@@ -103,7 +103,7 @@
     <!-- Copyright -->
     <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
         © 2022 Copyright:
-        <a class="text-reset fw-bold" href="/">blogasm.com</a>
+        <a class="text-reset fw-bold" href="/insta-jastaijastai">blogasm.com</a>
     </div>
     <!-- Copyright -->
 </footer>
