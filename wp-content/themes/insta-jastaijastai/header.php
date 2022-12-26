@@ -70,8 +70,8 @@
 				<?php endif; ?>
 			</ul>
 			<form class="d-flex" role="search" method="POST">
-				<input name="searchquery" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success" type="submit" name="search" id="search">Search</button>
+				<input name="searchquery" class="p-2 rounded-4 form-control me-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="rounded-pill btn btn-outline-success" type="submit" name="search" id="search">Search</button>
 			</form>
 			</div>
 		</div>
