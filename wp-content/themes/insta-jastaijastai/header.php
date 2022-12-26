@@ -37,7 +37,11 @@
 <?php wp_body_open(); ?>
 		<nav class="navbar navbar-expand-lg bg-light">
 		<div class="container-fluid">
-			<a class="navbar-brand text-black" href="/insta-jastaijastai">Blogasm</a>
+			<div class="logo">
+			<a class="navbar-brand" href="/insta-jastaijastai">
+				<img src="http://localhost/insta-jastaijastai/wp-content/uploads/2022/12/images/logo-main.png" alt="blogasm">
+			</a>
+			</div>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 			</button>
@@ -77,9 +81,7 @@
 		</div>
 		</nav>
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'insta-jastaijastai' ); ?></button>
-			<?php
+		<?php
 			wp_nav_menu(
 				array(
 					'theme_location' => 'menu-1',
@@ -93,8 +95,7 @@
 					'walker'		 => new WP_Bootstrap_Navwalker(),
 				)
 			);
-			?>
-		</nav><!-- #site-navigation -->
+		?>
 	</header><!-- #masthead -->
 	<!-- Alert -->
     <div id="msg"></div>
