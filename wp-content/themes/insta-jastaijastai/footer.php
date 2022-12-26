@@ -55,7 +55,8 @@
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                     <!-- Content -->
                     <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Blogasm
+                    <img style="width: 6rem;" src="http://localhost/insta-jastaijastai/wp-content/uploads/2022/12/images/logo-white.png" alt="blogasm">    
+                    Blogasm
                     </h6>
                     <p class="text-white">
                         Blogasm exists to provide the trusted and intresting app for the users.
@@ -70,7 +71,7 @@
                         Pages
                     </h6>
                     <p>
-                        <a href="#" class="text-white">Home</a>
+                        <a href="/insta-jastaijastai" class="text-white">Home</a>
                     </p>
                     <p>
                         <a href="#" class="text-white">About Us</a>
@@ -87,13 +88,10 @@
                     <h6 class="text-uppercase fw-bold mb-4">
                         Contact Us
                     </h6>
-                    <p class="text-white"><i class="fas fa-home me-3"></i> Gwarko, Lalitpur, Nepal</p>
-                    <p class="text-white">
-                        <i class="fas fa-envelope me-3"></i>
-                        info@targnet.com
-                    </p>
-                    <p class="text-white"><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                    <p class="text-white"><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                    <p class="text-white">Gwarko, Lalitpur, Nepal</p>
+                    <p class="text-white">info@blogasm.com</p>
+                    <p class="text-white">+ 01 234 567 88</p>
+                    <p class="text-white">+ 01 234 567 89</p>
                 </div>
                 <!-- Grid column -->
             </div>
