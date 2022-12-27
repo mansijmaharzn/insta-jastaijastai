@@ -52,7 +52,7 @@
 				</li>
 
 				<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $_SESSION['username']; ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				<a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 					Sort Posts
 				</a>
 				<ul class="dropdown-menu">
