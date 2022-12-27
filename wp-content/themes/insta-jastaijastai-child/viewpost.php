@@ -7,7 +7,10 @@ require "config.php";
 <?php
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
+        // update views count, doing first to show the latest view count
+        $conn->query("UPDATE posts SET `views` = `views` + 1 WHERE id='$id'");
 
+        // get * from post
         $post = $conn->query("SELECT * FROM posts WHERE id='$id'");
         $post->execute();
         $thepost = $post->fetch(PDO::FETCH_OBJ);
@@ -15,6 +18,7 @@ require "config.php";
         $featuredpost = $conn->query("SELECT * FROM posts WHERE title LIKE '%".$thepost->title."%'");
         $featuredpost->execute();
         $thefeaturedpost = $featuredpost->fetchAll(PDO::FETCH_OBJ);
+
     }
 
     // comment
@@ -86,7 +90,8 @@ require "config.php";
     <h1><?php echo $thepost->title; ?></h1>
     <p><?php echo $thepost->body; ?></p>
     <p>Post By: <a href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $thepost->username; ?>"><?php echo $thepost->username; ?></a></p>
-    <p>Likes: <?php echo $thepost->likes; ?></p>
+    <p>Likes Count: <?php echo $thepost->likes; ?></p>
+    <p>Views Count: <?php echo $thepost->views; ?></p>
 </div>
 
 <!-- like-btn -->
