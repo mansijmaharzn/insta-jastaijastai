@@ -51,6 +51,18 @@
 				<a class="nav-link" aria-current="page" href="/insta-jastaijastai">Home</a>
 				</li>
 
+				<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $_SESSION['username']; ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					Sort Posts
+				</a>
+				<ul class="dropdown-menu">
+					<li><a class="dropdown-item" href="/insta-jastaijastai/index.php/most-liked">Most Liked</a></li>
+					<li><a class="dropdown-item" href="/insta-jastaijastai/index.php/most-viewed">Most Viewed</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="/insta-jastaijastai/">Most Recent</a></li>
+				</ul>
+				</li>
+
 				<?php if(isset($_SESSION['username'])) : ?>
 				<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $_SESSION['username']; ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
