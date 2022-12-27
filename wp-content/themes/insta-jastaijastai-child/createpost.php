@@ -17,12 +17,13 @@ require "config.php";
             $body = $_POST['body'];
             $username = $_SESSION['username'];
 
-            $insert = $conn->prepare("INSERT INTO posts (title, body, username, likes) VALUES (:title, :body, :username, :likes)");
+            $insert = $conn->prepare("INSERT INTO posts (title, body, username, likes, views) VALUES (:title, :body, :username, :likes, :views)");
             $insert->execute([
                 ':title' => $title,
                 ':body' => $body,
                 ':username' => $username,
                 ':likes' => 0,
+                ':views' => 0,
             ]);
 
             echo "<script>window.location.href='../../';</script>";
