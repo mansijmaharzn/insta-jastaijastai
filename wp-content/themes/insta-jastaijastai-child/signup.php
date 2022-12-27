@@ -42,6 +42,7 @@ require "config.php";
 
 <div class="container p-5 px-6">
 <h1 align="center">Sign Up</h1>
+<p align="center" class="my-3">Hey 👋! Just a few information to join.</p>
 <form action="<?php echo  get_permalink($page_id); ?>" method="POST">
 <div class="form-floating mb-3 mt-4">
   <input type="username" name="username" class="form-control rounded-4" id="floatingInput" placeholder="ankara-messi">
