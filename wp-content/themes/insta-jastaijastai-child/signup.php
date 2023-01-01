@@ -22,19 +22,28 @@ require "config.php";
           $username = $_POST['username'];
           $password = $_POST['userpassword'];
 
-          $insert = $conn->prepare("INSERT INTO users (username, email, userpassword) VALUES (:username, :email, :userpassword)");
-          $insert->execute([
-              ':username' => $username,
-              ':email' => $email,
-              ':userpassword' => password_hash($password, PASSWORD_DEFAULT),
-          ]);
-          echo "Account Created!";
+          // fetch entered username and email in db
+          $validity = $conn->query("SELECT * FROM users WHERE email='$email' OR username='$username'");
+          $validity->execute();
+          $valid = $validity->fetchAll(PDO::FETCH_OBJ);
 
-          $_SESSION['username'] = $username;
-          $_SESSION['userpassword'] = $password;
-          // header("location: wp-content/themes/insta-jastaijastai/");
-          echo "<script>window.location.href='/insta-jastaijastai';</script>";
-          echo "Logged In!";
+          if (count($valid) == 0) {
+            $insert = $conn->prepare("INSERT INTO users (username, email, userpassword) VALUES (:username, :email, :userpassword)");
+            $insert->execute([
+                ':username' => $username,
+                ':email' => $email,
+                ':userpassword' => password_hash($password, PASSWORD_DEFAULT),
+            ]);
+            echo "Account Created!";
+            
+            $_SESSION['username'] = $username;
+            $_SESSION['userpassword'] = $password;
+            // header("location: wp-content/themes/insta-jastaijastai/");
+            echo "<script>window.location.href='/insta-jastaijastai';</script>";
+            echo "Logged In!";
+          } else {
+            echo "Username or Email Already Taken!";
+          }
         }
     }
 ?>

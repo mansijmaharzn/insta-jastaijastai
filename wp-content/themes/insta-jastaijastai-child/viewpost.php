@@ -72,7 +72,7 @@ require "config.php";
         echo "<script>window.location.href='?id=$id';</script>";
     }
 
-    // diliking
+    // disliking
     if (isset($_POST['dislike'])) {
         $post_id = $_POST['post_id'];
         $username = $_POST['username'];
