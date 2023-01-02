@@ -28,12 +28,21 @@ require "config.php";
           $valid = $validity->fetchAll(PDO::FETCH_OBJ);
 
           if (count($valid) == 0) {
+            // add user
             $insert = $conn->prepare("INSERT INTO users (username, email, userpassword) VALUES (:username, :email, :userpassword)");
             $insert->execute([
                 ':username' => $username,
                 ':email' => $email,
                 ':userpassword' => password_hash($password, PASSWORD_DEFAULT),
             ]);
+
+            // add initial custom status
+            $insertStatus = $conn->prepare("INSERT INTO custom_status (custom_status, username) VALUES (:custom_status, :username)");
+            $insertStatus->execute([
+                ':custom_status' => 'No Custom Status Yet!',
+                ':username' => $username,
+            ]);
+
             echo "Account Created!";
             
             $_SESSION['username'] = $username;
