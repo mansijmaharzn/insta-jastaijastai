@@ -49,12 +49,12 @@ require "config.php";
     }
 
     // like
-    // undefined username problem here! and custom status error
-    $username = $_SESSION['username'];
-    $likes = $conn->query("SELECT * FROM likes WHERE post_id='$id' AND username='$username'");
-    $likes->execute();
-
-    $like = $likes->fetchAll(PDO::FETCH_OBJ);
+    if ($_SESSION['username']) {
+        $username = $_SESSION['username'];
+        $likes = $conn->query("SELECT * FROM likes WHERE post_id='$id' AND username='$username'");
+        $likes->execute();
+        $like = $likes->fetchAll(PDO::FETCH_OBJ);
+    }
 
     // liking
     if (isset($_POST['like'])) {
