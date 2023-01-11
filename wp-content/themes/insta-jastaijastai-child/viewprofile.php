@@ -40,19 +40,7 @@ require "config.php";
         $username = $_POST['username'];
         $user_custom_status = $_POST['custom_status'];
 
-        $custom_status = $conn->query("SELECT * FROM custom_status WHERE username='$username'");
-        $custom_status->execute();
-        $thecustom_status = $custom_status->fetchAll(PDO::FETCH_OBJ);
-
-        if (count($thecustom_status) == 0) {
-            $insert = $conn->prepare("INSERT INTO custom_status (custom_status, username) VALUES (:custom_status, :username)");
-            $insert->execute([
-                ':custom_status' => $user_custom_status,
-                ':username' => $username,
-            ]);
-        } else {
-            $conn->query("UPDATE custom_status SET `custom_status` = '$user_custom_status' WHERE username='$username'");
-        }
+        $conn->query("UPDATE custom_status SET `custom_status` = '$user_custom_status' WHERE username='$username'");
 
         echo "<script>window.location.href='?username=$username';</script>";
     }
