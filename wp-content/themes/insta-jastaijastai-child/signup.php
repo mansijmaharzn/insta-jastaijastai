@@ -22,19 +22,37 @@ require "config.php";
           $username = $_POST['username'];
           $password = $_POST['userpassword'];
 
-          $insert = $conn->prepare("INSERT INTO users (username, email, userpassword) VALUES (:username, :email, :userpassword)");
-          $insert->execute([
-              ':username' => $username,
-              ':email' => $email,
-              ':userpassword' => password_hash($password, PASSWORD_DEFAULT),
-          ]);
-          echo "Account Created!";
+          // fetch entered username and email in db
+          $validity = $conn->query("SELECT * FROM users WHERE email='$email' OR username='$username'");
+          $validity->execute();
+          $valid = $validity->fetchAll(PDO::FETCH_OBJ);
 
-          $_SESSION['username'] = $username;
-          $_SESSION['userpassword'] = $password;
-          // header("location: wp-content/themes/insta-jastaijastai/");
-          echo "<script>window.location.href='/insta-jastaijastai';</script>";
-          echo "Logged In!";
+          if (count($valid) == 0) {
+            // add user
+            $insert = $conn->prepare("INSERT INTO users (username, email, userpassword) VALUES (:username, :email, :userpassword)");
+            $insert->execute([
+                ':username' => $username,
+                ':email' => $email,
+                ':userpassword' => password_hash($password, PASSWORD_DEFAULT),
+            ]);
+
+            // add initial custom status
+            $insertStatus = $conn->prepare("INSERT INTO custom_status (custom_status, username) VALUES (:custom_status, :username)");
+            $insertStatus->execute([
+                ':custom_status' => 'No Custom Status Yet!',
+                ':username' => $username,
+            ]);
+
+            echo "Account Created!";
+            
+            $_SESSION['username'] = $username;
+            $_SESSION['userpassword'] = $password;
+            // header("location: wp-content/themes/insta-jastaijastai/");
+            echo "<script>window.location.href='/insta-jastaijastai';</script>";
+            echo "Logged In!";
+          } else {
+            echo "Username or Email Already Taken!";
+          }
         }
     }
 ?>
