@@ -49,7 +49,7 @@ require "config.php";
     }
 
     // like
-    if ($_SESSION['username']) {
+    if (isset($_SESSION['username'])) {
         $username = $_SESSION['username'];
         $likes = $conn->query("SELECT * FROM likes WHERE post_id='$id' AND username='$username'");
         $likes->execute();
