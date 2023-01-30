@@ -85,14 +85,20 @@ require "config.php";
     }
 ?>
 
+<div class="mt-2">
+<button id="zoomOut" class="rounded-pill">🔍</button>
+<button id="zoomReset" class="rounded-pill">🔄</button>
+<button id="zoomIn" class="rounded-pill">🔎</button>
+</div>
+
 <!-- contents -->
-<div class="rounded-5 my-4 p-5" style="background-color: #FFCDC4">
-    <h1><?php echo $thepost->title; ?></h1>
-    <p><?php echo $thepost->body; ?></p>
-    <h6 class="float-end">Post By: <a href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $thepost->username; ?>"><?php echo $thepost->username; ?></a></h6>
-    <h6 class="float-end">On: <?php echo $thepost->created_at; ?></h6>
-    <h6>Likes Count: <?php echo $thepost->likes; ?></h6>
-    <h6>Views Count: <?php echo $thepost->views; ?></h6>
+<div class="rounded-5 my-4 p-5 zoomElement" style="background-color: #FFCDC4">
+    <h1 class="zoomElement"><?php echo $thepost->title; ?></h1>
+    <p class="zoomElement"><?php echo $thepost->body; ?></p>
+    <h6 class="zoomElement float-end">Post By: <a href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $thepost->username; ?>"><?php echo $thepost->username; ?></a></h6>
+    <h6 class="zoomElement float-end">On: <?php echo $thepost->created_at; ?></h6>
+    <h6 class="zoomElement">Likes Count: <?php echo $thepost->likes; ?></h6>
+    <h6 class="zoomElement">Views Count: <?php echo $thepost->views; ?></h6>
 </div>
 
 <!-- like-btn -->
@@ -117,7 +123,7 @@ require "config.php";
 <?php endif; ?>
 
 <!-- Comment Section -->
-<div class="row">
+<div class="row zoomElement">
 <div class="col rounded-5 my-3 mx-4 p-5" style="background-color: #04ccc2">
 <h3><?php echo count($comment); ?> Comments</h3>
 <?php if (isset($_SESSION['username'])) : ?>
@@ -137,7 +143,7 @@ require "config.php";
 <?php endif; ?>
 <!-- showComments -->
 <?php foreach($comment as $singleComment) : ?>
-<div class="listComment my-3 pt-1">
+<div class="listComment my-3 pt-1 zoomElement">
     <h6><a href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $singleComment->username; ?>"><?php echo $singleComment->username; ?></a></h6>
     <p><?php echo $singleComment->comment; ?></p>
 </div>
@@ -148,14 +154,59 @@ require "config.php";
 <div class="col rounded-5 my-3 mx-4 p-5" style="background-color: #04b5cc">
 <h3><?php echo count($thefeaturedpost) - 1; ?> Related Posts</h3>
 <?php foreach($thefeaturedpost as $singleFeaturedPost) : ?>
-<div class="my-3">
+<div class="my-3 zoomElement">
     <?php if ($singleFeaturedPost->title != $thepost->title) : ?>
-    <a href="/insta-jastaijastai/index.php/view-post?id=<?php echo $singleFeaturedPost->id; ?>"><?php echo $singleFeaturedPost->title; ?></a>
+    <a class="zoomElement" href="/insta-jastaijastai/index.php/view-post?id=<?php echo $singleFeaturedPost->id; ?>"><?php echo $singleFeaturedPost->title; ?></a>
     <?php endif; ?>
 </div>
 <?php endforeach; ?>
 </div>
 </div>
+
+
+<script type="text/javascript">
+    let zoom = 1;
+    let zoomStep = 0.02;
+    let zoomCount = 0;
+
+    const zoomTexts = document.getElementsByClassName("zoomElement");
+
+    let zoomInBtn = document.getElementById('zoomIn');
+    let zoomOutBtn = document.getElementById('zoomOut');
+    let zoomResetBtn = document.getElementById('zoomReset');
+
+    zoomInBtn.addEventListener('click', function() {
+        if (zoomCount < 2) {
+            zoom += zoomStep;
+            zoomCount += 1;
+            for (let i = 0; i < zoomTexts.length; i++) {
+                zoomTexts[i].style.transform = "scale(" + zoom + ")";
+            }
+        }
+    })
+
+    zoomOutBtn.addEventListener('click', function() {
+        if (zoomCount > -2) {
+            zoom -= zoomStep;
+            zoomCount -= 1;
+            for (let i = 0; i < zoomTexts.length; i++) {
+                zoomTexts[i].style.transform = "scale(" + zoom + ")";
+            }
+        }
+    })
+
+    zoomResetBtn.addEventListener('click', function() {
+        if (zoomCount != 0) {
+            zoom = 1;
+            zoomCount = 0;
+            for (let i = 0; i < zoomTexts.length; i++) {
+                zoomTexts[i].style.transform = "scale(" + zoom + ")";
+            }
+        }
+    })
+
+
+</script>
 
 <!-- Footer -->
 <?php
