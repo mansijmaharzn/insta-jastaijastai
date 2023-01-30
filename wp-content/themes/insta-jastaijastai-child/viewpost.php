@@ -89,9 +89,10 @@ require "config.php";
 <div class="rounded-5 my-4 p-5" style="background-color: #FFCDC4">
     <h1><?php echo $thepost->title; ?></h1>
     <p><?php echo $thepost->body; ?></p>
-    <p>Post By: <a href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $thepost->username; ?>"><?php echo $thepost->username; ?></a></p>
-    <p>Likes Count: <?php echo $thepost->likes; ?></p>
-    <p>Views Count: <?php echo $thepost->views; ?></p>
+    <h6 class="float-end">Post By: <a href="/insta-jastaijastai/index.php/viewprofile?username=<?php echo $thepost->username; ?>"><?php echo $thepost->username; ?></a></h6>
+    <h6 class="float-end">On: <?php echo $thepost->created_at; ?></h6>
+    <h6>Likes Count: <?php echo $thepost->likes; ?></h6>
+    <h6>Views Count: <?php echo $thepost->views; ?></h6>
 </div>
 
 <!-- like-btn -->
@@ -117,7 +118,7 @@ require "config.php";
 
 <!-- Comment Section -->
 <div class="row">
-<div class="col rounded-5 my-3 mx-4 p-5" style="background-color: #FFCDC4">
+<div class="col rounded-5 my-3 mx-4 p-5" style="background-color: #04ccc2">
 <h3><?php echo count($comment); ?> Comments</h3>
 <?php if (isset($_SESSION['username'])) : ?>
 <!-- commentForm -->
@@ -144,7 +145,7 @@ require "config.php";
 </div>
 
 <!-- featuredPosts -->
-<div class="col rounded-5 my-3 mx-4 p-5" style="background-color: #FFCDC4">
+<div class="col rounded-5 my-3 mx-4 p-5" style="background-color: #04b5cc">
 <h3><?php echo count($thefeaturedpost) - 1; ?> Related Posts</h3>
 <?php foreach($thefeaturedpost as $singleFeaturedPost) : ?>
 <div class="my-3">
