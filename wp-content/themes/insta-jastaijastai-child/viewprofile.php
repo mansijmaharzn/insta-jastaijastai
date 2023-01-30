@@ -77,21 +77,18 @@ require "config.php";
 <?php endif; ?>
 
 <!-- posts -->
-<div class="rounded-5 my-4 p-5" style="background-color: #FFCDC4">
+<div class="rounded-5 my-4 p-5">
 <h3><?php echo $theuser->username; ?>'s Posts</h3>
+
 <?php foreach($thepost as $row) : ?>
-<div class="card">
-    <div class="card-header">
-    <?php echo $row->username . " " . $row->created_at; ?>
-    </div>
-    <div class="card-body">
-        <h5 class="card-title"><?php echo $row->title; ?></h5>
-        <p class="card-text"><?php echo substr($row->body, 0, 90) . '...'; ?></p>
-        <p><p>Likes: <?php echo $row->likes; ?></p></p>
-        <a href="/insta-jastaijastai/index.php/view-post?id=<?php echo $row->id; ?>" class="btn btn-primary">View Post</a>
-    </div>
+<div class="rounded-5 my-4 p-4 px-5" style="background-color: #FFCDC4">
+<h6 class="float-end">On <?php echo date('Y-m-d', strtotime($row->created_at)); ?></h6>
+<a href="/insta-jastaijastai/index.php/view-post?id=<?php echo $row->id; ?>"><h4><?php echo $row->title; ?></h4></a>
+<p>Received <?php echo $row->likes . " likes and " . $row->views . " views!" ?></p>
+
 </div>
 <?php endforeach; ?>
+
 </div>
 
 <!-- Footer -->
