@@ -44,7 +44,7 @@
                         <a href="#" class="text-white">About Us</a>
                     </p>
                     <p>
-                        <a href="#" class="text-white">Contact Us</a>
+                        <a href="/insta-jastaijastai/index.php/contactus" class="text-white">Contact Us</a>
                     </p>
                 </div>
                 <!-- Grid column -->
