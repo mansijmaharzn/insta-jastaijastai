@@ -41,7 +41,7 @@
                         <a href="/insta-jastaijastai" class="text-white">Home</a>
                     </p>
                     <p>
-                        <a href="#" class="text-white">About Us</a>
+                        <a href="/insta-jastaijastai/index.php/aboutus" class="text-white">About Us</a>
                     </p>
                     <p>
                         <a href="/insta-jastaijastai/index.php/contactus" class="text-white">Contact Us</a>
