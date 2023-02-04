@@ -56,7 +56,7 @@
                         Contact Us
                     </h6>
                     <p class="text-white">Gwarko, Lalitpur, Nepal</p>
-                    <p class="text-white">info@blogasm.com</p>
+                    <p class="text-white">support@blogasm.com</p>
                     <p class="text-white">+ 01 234 567 88</p>
                     <p class="text-white">+ 01 234 567 89</p>
                 </div>
