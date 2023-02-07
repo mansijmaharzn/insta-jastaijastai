@@ -26,7 +26,7 @@ require "config.php";
                 ':views' => 0,
             ]);
 
-            echo "<script>window.location.href='../../';</script>";
+            echo "<script>window.location.href='../';</script>";
         }
     }
 ?>
